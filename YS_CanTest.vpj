@@ -1,0 +1,403 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+	Version="10.0"
+	VendorName="SlickEdit"
+	WorkingDir=".">
+	<Config
+		Name="Debug"
+		Type="cpp"
+		DebugCallbackName="gdb"
+		OutputFile="%bdYS_CanTest"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='cc -c -g %i %defd -o "%bd%n.o" "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link">
+				<Exec CmdLine='cc -g -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+		</Menu>
+	</Config>
+	<Config
+		Name="Release"
+		Type="cpp"
+		DebugCallbackName="gdb"
+		OutputFile="%bdYS_CanTest"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveCurrent"
+				OutputExts="*.o"
+				RunFromDir="%rw">
+				<Exec CmdLine='cc -c -O %i %defd -o "%bd%n.o" "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link">
+				<Exec CmdLine='cc -O -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+		</Menu>
+	</Config>
+	<Rules Name="Compile">
+		<Rule
+			InputExts="*.s"
+			OutputExts="*.o"
+			LinkObject="1">
+			<Exec CmdLine='as -o "%bd%n.o" "%f"'/>
+		</Rule>
+	</Rules>
+	<CustomFolders>
+		<Folder
+			Name="Source Files"
+			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d">
+		</Folder>
+		<Folder
+			Name="Header Files"
+			Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+		</Folder>
+		<Folder
+			Name="Resource Files"
+			Filters="*.ico;*.cur;*.dlg"/>
+		<Folder
+			Name="Bitmaps"
+			Filters="*.bmp"/>
+		<Folder
+			Name="Other Files"
+			Filters="">
+		</Folder>
+	</CustomFolders>
+	<Files AutoFolders="DirectoryView">
+		<Folder Name="Drivers">
+			<Folder Name="CMSIS">
+				<Folder Name="Device">
+					<Folder Name="ST">
+						<Folder Name="STM32F4xx">
+							<Folder Name="Include">
+								<F N="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"/>
+								<F N="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"/>
+								<F N="Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"/>
+							</Folder>
+						</Folder>
+					</Folder>
+				</Folder>
+				<Folder Name="Include">
+					<F N="Drivers/CMSIS/Include/cmsis_armcc.h"/>
+					<F N="Drivers/CMSIS/Include/cmsis_armclang.h"/>
+					<F N="Drivers/CMSIS/Include/cmsis_compiler.h"/>
+					<F N="Drivers/CMSIS/Include/cmsis_gcc.h"/>
+					<F N="Drivers/CMSIS/Include/cmsis_iccarm.h"/>
+					<F N="Drivers/CMSIS/Include/cmsis_version.h"/>
+					<F N="Drivers/CMSIS/Include/core_armv8mbl.h"/>
+					<F N="Drivers/CMSIS/Include/core_armv8mml.h"/>
+					<F N="Drivers/CMSIS/Include/core_cm0.h"/>
+					<F N="Drivers/CMSIS/Include/core_cm0plus.h"/>
+					<F N="Drivers/CMSIS/Include/core_cm1.h"/>
+					<F N="Drivers/CMSIS/Include/core_cm23.h"/>
+					<F N="Drivers/CMSIS/Include/core_cm3.h"/>
+					<F N="Drivers/CMSIS/Include/core_cm33.h"/>
+					<F N="Drivers/CMSIS/Include/core_cm4.h"/>
+					<F N="Drivers/CMSIS/Include/core_cm7.h"/>
+					<F N="Drivers/CMSIS/Include/core_sc000.h"/>
+					<F N="Drivers/CMSIS/Include/core_sc300.h"/>
+					<F N="Drivers/CMSIS/Include/mpu_armv7.h"/>
+					<F N="Drivers/CMSIS/Include/mpu_armv8.h"/>
+					<F N="Drivers/CMSIS/Include/tz_context.h"/>
+				</Folder>
+			</Folder>
+			<Folder Name="STM32F4xx_HAL_Driver">
+				<Folder Name="Inc">
+					<Folder Name="Legacy">
+						<F N="Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"/>
+					</Folder>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"/>
+				</Folder>
+				<Folder Name="Src">
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c"/>
+					<F N="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"/>
+				</Folder>
+			</Folder>
+		</Folder>
+		<Folder Name="EWARM">
+			<Folder Name="settings">
+				<F N="EWARM/settings/YS_CanTest.dnx"/>
+				<F N="EWARM/settings/YS_CanTest.YS_CanTest.cspy.bat"/>
+				<F N="EWARM/settings/YS_CanTest.YS_CanTest.cspy.ps1"/>
+				<F N="EWARM/settings/YS_CanTest.YS_CanTest.driver.xcl"/>
+				<F N="EWARM/settings/YS_CanTest.YS_CanTest.general.xcl"/>
+			</Folder>
+			<Folder Name="YS_CanTest">
+				<Folder Name="Obj">
+					<F N="EWARM/YS_CanTest/Obj/can.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/can.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/cmsis_os.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/cmsis_os.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/croutine.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/croutine.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/event_groups.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/event_groups.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/freertos.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/freertos.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/gpio.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/gpio.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/heap_4.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/heap_4.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/list.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/list.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/main.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/main.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/port.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/port.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/queue.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/queue.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_can.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_can.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_cortex.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_cortex.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_dma.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_dma.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_dma_ex.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_dma_ex.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_exti.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_exti.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_flash.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_flash.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_flash_ex.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_flash_ex.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_flash_ramfunc.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_flash_ramfunc.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_gpio.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_gpio.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_msp.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_msp.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_pwr.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_pwr.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_pwr_ex.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_pwr_ex.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_rcc.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_rcc.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_rcc_ex.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_rcc_ex.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_tim.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_tim.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_tim_ex.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_tim_ex.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_timebase_tim.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_timebase_tim.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_uart.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_hal_uart.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_it.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stm32f4xx_it.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/stream_buffer.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/stream_buffer.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/system_stm32f4xx.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/system_stm32f4xx.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/tasks.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/tasks.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/timers.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/timers.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/usart.pbi"/>
+					<F N="EWARM/YS_CanTest/Obj/usart.pbi.xcl"/>
+					<F N="EWARM/YS_CanTest/Obj/YS_CanTest.pbd"/>
+					<F N="EWARM/YS_CanTest/Obj/YS_CanTest.pbd.browse"/>
+					<F N="EWARM/YS_CanTest/Obj/YS_CanTest.pbd.linf"/>
+					<F N="EWARM/YS_CanTest/Obj/YS_CanTest.pbw"/>
+				</Folder>
+			</Folder>
+			<F N="EWARM/Project.eww"/>
+			<F N="EWARM/startup_stm32f407xx.s"/>
+			<F N="EWARM/stm32f407xx_flash.icf"/>
+			<F N="EWARM/stm32f407xx_sram.icf"/>
+			<F N="EWARM/YS_CanTest.ewd"/>
+			<F N="EWARM/YS_CanTest.ewp"/>
+		</Folder>
+		<Folder Name="Inc">
+			<F N="Inc/can.h"/>
+			<F N="Inc/FreeRTOSConfig.h"/>
+			<F N="Inc/gpio.h"/>
+			<F N="Inc/main.h"/>
+			<F N="Inc/stm32f4xx_hal_conf.h"/>
+			<F N="Inc/stm32f4xx_it.h"/>
+			<F N="Inc/usart.h"/>
+		</Folder>
+		<Folder Name="Middlewares">
+			<Folder Name="Third_Party">
+				<Folder Name="FreeRTOS">
+					<Folder Name="Source">
+						<Folder Name="CMSIS_RTOS">
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"/>
+						</Folder>
+						<Folder Name="include">
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/croutine.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/list.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/message_buffer.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/mpu_prototypes.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/portable.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/stack_macros.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/StackMacros.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/task.h"/>
+							<F N="Middlewares/Third_Party/FreeRTOS/Source/include/timers.h"/>
+						</Folder>
+						<Folder Name="portable">
+							<Folder Name="IAR">
+								<Folder Name="ARM_CM4F">
+									<F N="Middlewares/Third_Party/FreeRTOS/Source/portable/IAR/ARM_CM4F/port.c"/>
+									<F N="Middlewares/Third_Party/FreeRTOS/Source/portable/IAR/ARM_CM4F/portasm.s"/>
+									<F N="Middlewares/Third_Party/FreeRTOS/Source/portable/IAR/ARM_CM4F/portmacro.h"/>
+								</Folder>
+							</Folder>
+							<Folder Name="MemMang">
+								<F N="Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c"/>
+							</Folder>
+						</Folder>
+						<F N="Middlewares/Third_Party/FreeRTOS/Source/croutine.c"/>
+						<F N="Middlewares/Third_Party/FreeRTOS/Source/event_groups.c"/>
+						<F N="Middlewares/Third_Party/FreeRTOS/Source/list.c"/>
+						<F N="Middlewares/Third_Party/FreeRTOS/Source/queue.c"/>
+						<F N="Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c"/>
+						<F N="Middlewares/Third_Party/FreeRTOS/Source/tasks.c"/>
+						<F N="Middlewares/Third_Party/FreeRTOS/Source/timers.c"/>
+					</Folder>
+				</Folder>
+			</Folder>
+		</Folder>
+		<Folder Name="Src">
+			<F N="Src/can.c"/>
+			<F N="Src/freertos.c"/>
+			<F N="Src/gpio.c"/>
+			<F N="Src/main.c"/>
+			<F N="Src/stm32f4xx_hal_msp.c"/>
+			<F N="Src/stm32f4xx_hal_timebase_tim.c"/>
+			<F N="Src/stm32f4xx_it.c"/>
+			<F N="Src/system_stm32f4xx.c"/>
+			<F N="Src/usart.c"/>
+		</Folder>
+		<F N=".mxproject"/>
+		<F N="YS_CanTest.ioc"/>
+		<F N="YS_CanTest.vpj"/>
+		<F N="YS_CanTest.vpw"/>
+		<F N="YS_CanTest.vpwhist"/>
+	</Files>
+</Project>
